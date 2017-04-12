@@ -14,5 +14,11 @@ template = File.read(template_file)
 
 CSV.foreach(csv_file, :headers => :first_row) do |row|
   msg = Msg.new(row, template)
-  Email.new(msg).dispatch
+  begin
+    Email.new(msg).dispatch
+  rescue StandardError
+    puts "Failed to send to %s" % msg.email
+  else
+    puts "Sent to %s" % msg.email
+  end
 end
