@@ -13,12 +13,12 @@ template_file = ENV['TEMPLATE'] || 'test.txt'
 template = File.read(template_file)
 
 CSV.foreach(csv_file, :headers => :first_row) do |row|
-  msg = Msg.new(row, template)
   begin
+    msg = Msg.new(row, template)
     Email.new(msg).dispatch
-  rescue StandardError
-    puts "Failed to send to %s" % msg.email
+  rescue StandardError => e
+    puts "Failed to send to %s - %s." % [msg.email, e]
   else
-    puts "Sent to %s" % msg.email
+    puts "Sent to %s." % msg.email
   end
 end
