@@ -16,6 +16,7 @@ class Email
       :from => "%s <%s>" % [ENV["FROM_NAME"], ENV["FROM_EMAIL"]],
       :subject => msg.subject,
       :body => msg.body,
+      :charset => "UTF-8",
       :via => :smtp,
         :via_options => {
         :address              => ENV["SMTP_SERVER"],
