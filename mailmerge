@@ -12,6 +12,8 @@ csv_file = ENV['CSV'] || 'test.csv'
 template_file = ENV['TEMPLATE'] || 'test.txt'
 template = File.read(template_file)
 
+Pony.override_options = { :via => :test } if ENV['PREVIEW']
+
 CSV.foreach(csv_file, :headers => :first_row) do |row|
   begin
     msg = Msg.new(row, template)
@@ -22,3 +24,5 @@ CSV.foreach(csv_file, :headers => :first_row) do |row|
     puts "Sent to %s." % msg.email
   end
 end
+
+puts Mail::TestMailer.deliveries if ENV['PREVIEW']

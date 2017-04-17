@@ -58,6 +58,12 @@ CSV=test.csv
 TEMPLATE=test.txt
 ```
 
+Set `PREVIEW=1` to view a preview of the emails without actually sending them.
+
+```
+PREVIEW=1 CSV=foo.csv TEMPLATE=bar.txt ./mailmerge
+```
+
 ### Email Template
 
 The first line of the template file is used for the subject line.
