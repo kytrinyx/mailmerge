@@ -40,7 +40,7 @@ https://security.google.com/settings/security/apppasswords
 SMTP_LOGIN=<your gmail address>
 SMTP_PASSWORD=<your app-specific password>
 SMTP_PORT=587
-SMTP_SERVER=smtp.gmail.net
+SMTP_SERVER=smtp.gmail.com
 ```
 
 ## Sending Emails
